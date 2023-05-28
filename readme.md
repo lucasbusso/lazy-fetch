@@ -1,1 +1,1 @@
-First commit
+Lazy fetch strategy for users with bandwidth constrained connection. Using Redux Toolkit thunk and Query and React as FE library
