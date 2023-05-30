@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchUsers, addUsers } from "../store"
+import { fetchUsers, addUsers, removeUser } from "../store"
 import SkeletonSpinner from "./SkeletonSpinner"
 import Button from './Button'
 
@@ -19,6 +19,10 @@ function UsersList() {
         dispatch(addUsers())
     }
 
+    function handleUserDelete(uderId) {
+        dispatch(removeUser(uderId))
+    }
+
     if(isLoading) {
         return <SkeletonSpinner times={6} className="h-10 w-full"/>
     }
@@ -31,6 +35,9 @@ function UsersList() {
             <div key={user.id} className="mb-2 border rounded">
                 <div className="flex p-2 justify-between items-center cursor-pointer">
                     {user.name}
+                    <Button onClick={() => handleUserDelete(user.id)}>
+                        Delete
+                    </Button>
                 </div>
             </div>
         )
