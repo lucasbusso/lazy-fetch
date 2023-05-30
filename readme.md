@@ -1,1 +1,3 @@
-Lazy fetch strategy for users with bandwidth constrained connection. Using Redux Toolkit thunk and Query and React as FE library
+- Lazy fetch different strategies for users with bandwidth constrained connection. 
+- Using async thunk fuctions to fetch Users data and Redux Toolkit Query to fetch albums and photos data.
+- FE done with React.
