@@ -8,6 +8,7 @@ function UsersList() {
     const dispatch = useDispatch()
     
     const {isLoading, data, error} = useSelector((state) => {
+        console.log(state.users.data);
         return state.users
     })
 
@@ -23,9 +24,7 @@ function UsersList() {
         dispatch(removeUser(uderId))
     }
 
-    if(isLoading) {
-        return <SkeletonSpinner times={6} className="h-10 w-full"/>
-    }
+
     if(error) {
         return <div>Error fetching data...</div>
     }
@@ -42,6 +41,7 @@ function UsersList() {
             </div>
         )
     })
+
     return(
         <div>
             <div className="flex flex-grow justify-between m3">
@@ -50,8 +50,12 @@ function UsersList() {
                     Add User
                 </Button>
             </div>
-            {renderedUsers}
+            { isLoading 
+                ? ( <SkeletonSpinner times={data.length} className="h-10 w-full"/> )
+                : ( renderedUsers )
+            }
         </div>
+
     )
 }
 
