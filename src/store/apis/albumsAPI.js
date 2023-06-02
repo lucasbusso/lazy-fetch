@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const albumsApi = createApi({
-    reducerPath: 'albums',
+    reducerPath: 'albums', // es la key con la que podes acceder con el reducer desde el store
     baseQuery: fetchBaseQuery({
         baseUrl:"http://localhost:3005"
     }),
@@ -21,3 +21,6 @@ const albumsApi = createApi({
         }
     }
 })
+
+export const { useFetchAlbumsQuery } = albumsApi // hook generado automaticamente por RTK
+export { albumsApi }
